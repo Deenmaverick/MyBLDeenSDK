@@ -60,7 +60,8 @@ internal fun transformCommonCardListPatchModel(
         isVideo = item.isVideo,
         isLive = item.isLive,
         FeatureSize = item.FeatureSize,
-        itemMidContent = itemMidContent
+        itemMidContent = itemMidContent,
+        isPremium = item.isPremium
     )
 }
 
