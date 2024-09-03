@@ -17,6 +17,9 @@
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+
 
     <!-- This is where your queries declaration goes -->
     <queries>
@@ -76,13 +79,20 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".service.libs.notification.AlarmReceiverService" />
-        <service android:name=".service.libs.sessiontrack.SessionReceiverService" />
+        <service android:name=".service.libs.sessiontrack.SessionReceiverService"
+            android:foregroundServiceType="shortService"
+            android:exported="false"/>
 
 
-        <service android:name=".service.libs.media3.QuranPlayer" />
-        <service android:name=".service.libs.media3.QuranPlayerOffline" />
-        <service android:name=".service.libs.downloader.QuranDownloadService" />
+        <service android:name=".service.libs.media3.QuranPlayer"
+            android:foregroundServiceType="mediaPlayback"
+            android:exported="false"/>
+        <service android:name=".service.libs.media3.QuranPlayerOffline"
+            android:foregroundServiceType="mediaPlayback"
+            android:exported="false"/>
+        <service android:name=".service.libs.downloader.QuranDownloadService"
+            android:foregroundServiceType="dataSync"
+            android:exported="false"/>
 
         <receiver android:name=".service.libs.media3.QuranPlayerBroadcast"
             android:enabled="true"

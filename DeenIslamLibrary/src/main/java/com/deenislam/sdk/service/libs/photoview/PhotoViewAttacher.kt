@@ -69,7 +69,7 @@ internal class PhotoViewAttacher(private val mImageView: ImageView) :
         }
 
         override fun onFling(
-          e1: MotionEvent,
+          e1: MotionEvent?,
           e2: MotionEvent,
           velocityX: Float,
           velocityY: Float
@@ -78,12 +78,14 @@ internal class PhotoViewAttacher(private val mImageView: ImageView) :
             if (scale > DEFAULT_MIN_SCALE) {
               return false
             }
-            return if (e1.pointerCount > SINGLE_TOUCH ||
-              e2.pointerCount > SINGLE_TOUCH
-            ) {
-              false
-            } else {
-              mSingleFlingListener!!.onFling(e1, e2, velocityX, velocityY)
+            if (e1 != null) {
+              return if (e1.pointerCount > SINGLE_TOUCH ||
+                e2.pointerCount > SINGLE_TOUCH
+              ) {
+                false
+              } else {
+                mSingleFlingListener!!.onFling(e1, e2, velocityX, velocityY)
+              }
             }
           }
           return false

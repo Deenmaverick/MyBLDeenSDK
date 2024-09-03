@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.ServiceInfo
 import android.content.res.Configuration
 import android.media.AudioAttributes
 import android.media.AudioFocusRequest
@@ -51,6 +52,8 @@ import java.util.concurrent.TimeUnit
 
 
 internal class QuranPlayer: Service(){
+
+    private val packageNameHash = "com.deenislam.sdk.mybl".hashCode()
 
     private var repository: AlQuranRepository = AlQuranRepository(
         deenService = NetworkProvider().getInstance().provideDeenService(),
@@ -233,7 +236,15 @@ internal class QuranPlayer: Service(){
 
 
 
-        startForeground(1005, notificationBuilder.build())
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            startForeground(
+                packageNameHash,
+                notificationBuilder.build(),
+                ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK
+            )
+        } else {
+            startForeground(packageNameHash, notificationBuilder.build())
+        }
 
         return START_STICKY
     }
@@ -427,7 +438,7 @@ internal class QuranPlayer: Service(){
             .setCustomHeadsUpContentView(miniCustomLayout)  // For heads-up notification
 
         // Notify the notification manager with the updated notification
-        notificationManager.notify(1005, updatedNotificationBuilder.build())
+        notificationManager.notify(packageNameHash, updatedNotificationBuilder.build())
     }
 
 
@@ -548,11 +559,15 @@ internal class QuranPlayer: Service(){
         Log.d("QuranPlayerService", "Releasing media player")
         releaseMediaPlayer()
 
-        Log.d("QuranPlayerService", "Releasing media session")
-        //mediaSession.release()
+        notificationManager.cancelAll()
+
         tryCatch {
             wakeLock?.release()
         }
+
+        // Stop the service
+        Log.d("QuranPlayerService", "Stopping self")
+        //stopSelf()
 
 
         // Stop foreground and remove notification
@@ -561,11 +576,6 @@ internal class QuranPlayer: Service(){
         } else {
             stopForeground(true)
         }
-
-        notificationManager.cancelAll()
-        // Stop the service
-        Log.d("QuranPlayerService", "Stopping self")
-        //stopSelf()
 
         // Notify any callbacks about the service stop
         Log.d("QuranPlayerService", "Notifying callbacks")

@@ -200,7 +200,7 @@ internal class LivePodcastFragment : BaseRegularFragment(), LivePodcastCallback,
                         context?.let { it.toast(localContext.getString(R.string.there_is_no_live_at_the_moment)) }
                 }
                 else {
-                    if(!Subscription.isSubscribe){
+                    if(!Subscription.isSubscribe && getData.isPremium){
                         gotoFrag(R.id.action_global_subscriptionFragment)
                         return
                     }

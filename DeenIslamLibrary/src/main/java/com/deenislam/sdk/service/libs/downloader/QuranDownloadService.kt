@@ -7,6 +7,7 @@ import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ServiceInfo
 import android.os.Binder
 import android.os.Build
 import android.os.IBinder
@@ -136,7 +137,18 @@ internal class QuranDownloadService : Service() {
                         }
 
                         // Start the download with the unique notification ID
-                        startForeground(notificationId, createNotification(notificationId))
+                        //startForeground(notificationId, createNotification(notificationId))
+
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                            startForeground(
+                                notificationId,
+                                createNotification(notificationId),
+                                ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
+                            )
+                        } else {
+                            startForeground(notificationId,  createNotification(notificationId))
+                        }
+
                         CoroutineScope(Dispatchers.Main).launch { updateNotification(
                             0,
                             notificationId,

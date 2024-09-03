@@ -44,5 +44,6 @@ internal data class Item(
     val isVideo:Boolean = false,
     val isLive:Boolean = false,
     val FeatureSize:String? = "",
-    val Serial:Int = 0
+    val Serial:Int = 0,
+    val isPremium:Boolean = false
 ): Parcelable
