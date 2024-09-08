@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Keep
 @Parcelize
-internal class PaymentModel(
+class PaymentModel(
     val title: String,
     val amount: String,
     val redirectPage: Int,

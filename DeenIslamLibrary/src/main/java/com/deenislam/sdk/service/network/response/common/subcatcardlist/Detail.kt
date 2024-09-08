@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Keep
-internal data class Detail(
+data class Detail(
     val ImageUrl: String,
     val Pronunciation: String,
     val Serial: Int,

@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 
 @Keep
 @Parcelize
-internal data class CommonCardData(
+data class CommonCardData(
     val Id: Int = 0,
     val category: String? = null,
     val categoryID: Int = 0,

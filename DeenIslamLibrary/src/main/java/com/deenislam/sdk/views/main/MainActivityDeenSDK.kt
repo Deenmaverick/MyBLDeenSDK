@@ -602,7 +602,7 @@ internal class MainActivityDeenSDK : AppCompatActivity(), QuranPlayerCallback {
                 Log.e("setupBackPressCallback",navController.previousBackStackEntry?.destination?.id.toString())
                 // Handle the back button event
                 if (navController.previousBackStackEntry?.destination?.id?.equals(
-                        navController.graph.startDestination
+                        navController.graph.startDestinationId
                     ) != true &&
                     navController.previousBackStackEntry?.destination?.id?.equals(
                         R.id.blankFragment

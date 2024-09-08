@@ -9,7 +9,7 @@ internal data class UserPref(
 
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id", defaultValue = "1")
-    val id:Int = 1,
+    var id:Int = 1,
 
     @ColumnInfo(name = "language", defaultValue = "bn")
     var language:String = "bn",

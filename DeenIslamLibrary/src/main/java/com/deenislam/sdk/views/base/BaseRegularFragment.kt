@@ -161,7 +161,7 @@ internal abstract class BaseRegularFragment: Fragment() {
         lastClickTime = currentTime
 
         if (findNavController().previousBackStackEntry?.destination?.id?.equals(
-                findNavController().graph.startDestination
+                findNavController().graph.startDestinationId
             ) != true &&
             findNavController().previousBackStackEntry?.destination?.id?.equals(
                 R.id.blankFragment

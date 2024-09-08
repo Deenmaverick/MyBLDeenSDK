@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        kotlin_version = '1.6.0'
+        kotlin_version = '1.9.25'
         rx_java_version = '2.2.21'
         rx_kotlin_version = '2.4.0'
         rx_android_version = '2.1.1'
@@ -9,6 +9,8 @@ buildscript {
         lifecycle_version = "2.2.0"
         glide_version = '4.12.0'
         dimen_version = "1.0.6"
+        agp_version = '8.2.2'
+        agp_version1 = '8.2.2'
     }
     repositories {
         google()
@@ -16,12 +18,12 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.2'
+        classpath "com.android.tools.build:gradle:$agp_version1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:4.3.14'
         classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version"
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.2'
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.8.0"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

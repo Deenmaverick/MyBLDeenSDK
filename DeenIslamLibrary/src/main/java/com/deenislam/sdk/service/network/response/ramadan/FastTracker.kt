@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Keep
 @Parcelize
-internal data class FastTracker(
+data class FastTracker(
     val Date: String,
     val Iftaar: String,
     val Suhoor: String,

@@ -6,7 +6,7 @@ import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 @Keep
-internal data class IslamicNameHomeResponse(
+data class IslamicNameHomeResponse(
     @SerializedName("Data")
     var `data`: List<Data>,
     @SerializedName("Message")

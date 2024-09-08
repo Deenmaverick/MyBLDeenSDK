@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Keep
 @Parcelize
-internal data class SurahListData(
+data class SurahListData(
     val ContentBaseUrl: String,
     val ContentUrl: String,
     val Duration: String,

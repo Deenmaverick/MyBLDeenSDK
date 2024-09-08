@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Keep
-internal data class AnswerSheet(
+data class AnswerSheet(
     val contentID: Int,
     val courseID: Int,
     val language: String,

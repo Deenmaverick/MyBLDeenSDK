@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Keep
 @Parcelize
-internal data class Chapter(
+data class Chapter(
     val bismillah_pre: Boolean,
     val id: Int,
     val name_arabic: String,

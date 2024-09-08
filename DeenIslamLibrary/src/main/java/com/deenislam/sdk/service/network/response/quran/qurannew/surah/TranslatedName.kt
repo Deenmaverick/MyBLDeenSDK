@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Keep
 @Parcelize
-internal data class TranslatedName(
+data class TranslatedName(
     val language_name: String,
     val name: String
 ) : Parcelable

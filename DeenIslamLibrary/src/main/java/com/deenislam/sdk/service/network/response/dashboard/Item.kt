@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Keep
 @Parcelize
-internal data class Item(
+data class Item(
     val ArabicText: String,
     val ContentType: String,
     val FeatureID: Int,
